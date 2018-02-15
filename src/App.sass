@@ -1,0 +1,94 @@
+//Color variables
+
+$colors: (bug: #409209, dark: #72594A,dragon: #8900F1, electric: #c7ab3a, fairy: #FB8FA9, fighting: #be2828, fire: #ff8a2b, flying: #816bfa, ghost: #784E93, grass: #418600, ground: #E1C36F, ice: #86DAD7, normal: #7a7a7a, poison: #8d127d, psychic: #FF3B83, rock: #B7A346, steel: #B9B4CD, water: #6E82EB)
+$link: #447fd8
+
+@mixin type()
+  @each $colorName, $colorCode in $colors 
+    &.#{$colorName}
+      background: $colorCode/0.7
+      border-color: $colorCode
+      color: #222
+
+
+*
+  margin: 0
+  padding: 0
+
+
+.App 
+  text-align: center
+  h1 
+    margin-top: 30px
+  .search
+    margin-top: 40px
+    input[type='text'],button
+      font-size: 1.3em
+  .addMore
+    font-size: 1.1em
+    text-decoration: none
+    color: $link
+    &:visited
+      color: $link
+
+.pokeContainer
+  display: grid
+  grid-template-columns: 1fr
+  //background-color: peachpuff
+  grid-gap: 3px
+  margin: 20px 0
+  padding: 0 10px
+
+.pokemon
+  //background-color: palegreen
+  display: flex
+  flex-direction: column
+  img
+    align-self: center
+  
+.info
+  height: 70px
+  //background: palegoldenrod
+  display: flex
+  justify-content: space-between
+  header 
+    //background: olive
+    flex-grow: 2
+    display: flex
+    flex-direction: column
+    justify-content: center
+    h5
+      font-size: 1.3em
+      text-transform: capitalize
+  .typeContainer
+    //background: red
+    display: flex
+    justify-content: center
+    flex-direction: column
+    padding: 3px 5px
+
+.type
+  width: 70px
+  height: 30px
+  box-sizing: border-box
+  border: 2px solid
+  border-radius: 30px
+  display: flex
+  justify-content: center
+  align-items: center
+  font-weight: bold
+  margin: 1px 0
+  +type()
+
+
+@media (min-width: 480px)
+  .pokeContainer
+    grid-template-columns: repeat(2,1fr)
+
+@media (min-width: 720px)
+  .pokeContainer
+    grid-template-columns: repeat(3,1fr)
+
+@media (min-width: 1028px)
+  .pokeContainer
+    grid-template-columns: repeat(4,1fr)
